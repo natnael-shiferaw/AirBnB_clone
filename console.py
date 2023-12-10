@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""This is a module with a class called HBNBCommand 
+"""This is a module with a class called HBNBCommand
 used for the command interpreter or the console."""
 
 import cmd
@@ -99,7 +99,6 @@ class HBNBCommand(cmd.Cmd):
                     setattr(storage.all()[key], attr, value)
                 storage.all()[key].save()
 
-
     def do_all(self, line):
         """This method is used for printing all the string
         representation of every instance."""
@@ -110,7 +109,7 @@ class HBNBCommand(cmd.Cmd):
                 print("** class doesn't exist **")
             else:
                 my_list = [str(obj) for key, obj in storage.all().items()
-                      if type(obj).__name__ == args[0]]
+                           if type(obj).__name__ == args[0]]
                 print(my_list)
         else:
             my_list = [str(obj) for key, obj in storage.all().items()]

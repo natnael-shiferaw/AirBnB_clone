@@ -31,7 +31,8 @@ class FileStorage:
         """ This method is used for the serialization of
         __objects to the JSON file (path: __file_path)"""
         with open(FileStorage.__file_path, "w", encoding="utf-8") as file:
-            d = {key: value.to_dict() for key, value in FileStorage.__objects.items()}
+            d = {key: value.to_dict()
+                 for key, value in FileStorage.__objects.items()}
             json.dump(d, file)
 
     def classes(self):

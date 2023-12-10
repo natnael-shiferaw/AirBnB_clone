@@ -271,7 +271,7 @@ class TestFileStorage(unittest.TestCase):
         self.assertEqual(str(err.exception), msg)
 
     def test_save_method_with_many_args(self):
-        """This method helps to test the save method with too many arguments."""
+        """This method helps to test save method with too many arguments."""
         self.resetStorage()
         with self.assertRaises(TypeError) as err:
             FileStorage.save(self, 98)
@@ -320,7 +320,7 @@ class TestFileStorage(unittest.TestCase):
         self.helper_test_reload_method("Review")
 
     def helper_test_reload_method_mismatch(self, class_name):
-        """This method helps to test the reload method mismatch for classname."""
+        """This method helps to test reload method mismatch for classname."""
         self.resetStorage()
         storage.reload()
         self.assertEqual(FileStorage._FileStorage__objects, {})
@@ -335,7 +335,7 @@ class TestFileStorage(unittest.TestCase):
         self.assertNotEqual(obj.to_dict(), storage.all()[key].to_dict())
 
     def test_baseModel_reload_method_mismatch(self):
-        """This method helps to test the reload method mismatch for BaseModel."""
+        """This method helps to test reload method mismatch for BaseModel."""
         self.helper_test_reload_method_mismatch("BaseModel")
 
     def test_user_reload_method_mismatch(self):
@@ -371,7 +371,8 @@ class TestFileStorage(unittest.TestCase):
         self.assertEqual(str(err.exception), msg)
 
     def test_reload_method_with_many_args(self):
-        """This method helps to test the reload method with too many arguments."""
+        """This method helps to test the reload method
+        with too many arguments."""
         self.resetStorage()
         with self.assertRaises(TypeError) as err:
             FileStorage.reload(self, 98)

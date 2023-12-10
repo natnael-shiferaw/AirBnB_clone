@@ -66,21 +66,24 @@ EOF  all  count  create  destroy  help  quit  show  update
         """A method that tests the help command for EOF."""
         with patch('sys.stdout', new=StringIO()) as f:
             HBNBCommand().onecmd("help EOF")
-        expected_output = 'This method is used to handle the End Of File.\n        \n'
+        expected_output = 'This method is used to handle \
+                           the End Of File.\n        \n'
         self.assertEqual(expected_output, f.getvalue())
 
     def test_help_command_for_quit(self):
         """A method that tests the help command for quit."""
         with patch('sys.stdout', new=StringIO()) as f:
             HBNBCommand().onecmd("help quit")
-        expected_output = 'This method is a Quit command to exit the program.\n        \n'
+        expected_output = 'This method is a Quit command to \
+                           exit the program.\n        \n'
         self.assertEqual(expected_output, f.getvalue())
 
     def test_help_command_for_create(self):
         """A method that tests the help command for create."""
         with patch('sys.stdout', new=StringIO()) as f:
             HBNBCommand().onecmd("help create")
-        expected_output = '''This method is used to create a new instance of BaseModel,
+        expected_output = '''This method is used to create a \
+                             new instance of BaseModel,
         saves it(to the JSON file) and prints the id.\n        \n'''
         self.assertEqual(expected_output, f.getvalue())
 
@@ -544,9 +547,9 @@ EOF  all  count  create  destroy  help  quit  show  update
                     pass
                 match = (type(val) == str)
                 self.helper_test_for_update_command(class_name, uid, attr,
-                                      val, match, False)
+                                                    val, match, False)
                 self.helper_test_for_update_command(class_name, uid, attr,
-                                      val, match, True)
+                                                    val, match, True)
             pass
             if class_name == "BaseModel":
                 continue
@@ -554,13 +557,14 @@ EOF  all  count  create  destroy  help  quit  show  update
                 if attr_type not in (str, int, float):
                     continue
                 self.helper_test_for_update_command(class_name, uid, attr,
-                                      self.attr_val[attr_type],
-                                      True, False)
+                                                    self.attr_val[attr_type],
+                                                    True, False)
                 self.helper_test_for_update_command(class_name, uid, attr,
-                                      self.attr_val[attr_type],
-                                      False, True)
+                                                    self.attr_val[attr_type],
+                                                    False, True)
 
-    def helper_test_for_update_command(self, class_name, uid, attr, val, quotes, func):
+    def helper_test_for_update_command(
+                            self, class_name, uid, attr, val, quotes, func):
         """This method helps test the update commmand."""
         FileStorage._FileStorage__objects = {}
         if os.path.isfile("file.json"):
@@ -661,7 +665,8 @@ EOF  all  count  create  destroy  help  quit  show  update
         match_result = regex_pattern.match(representation)
         self.assertIsNotNone(match_result)
         captured_str = match_result.group(3)
-        modified_str = re.sub(r"(datetime\.datetime\([^)]*\))", "'\\1'", captured_str)
+        modified_str = re.sub(r"(datetime\.datetime\([^)]*\))",
+                              "'\\1'", captured_str)
         parsed_dict = json.loads(modified_str.replace("'", '"'))
         return parsed_dict
 

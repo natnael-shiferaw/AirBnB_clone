@@ -15,7 +15,6 @@ from models.engine.file_storage import FileStorage
 from models import storage
 
 
-
 class TestBaseModel(unittest.TestCase):
 
     """This class is used for testing the edge Cases
@@ -41,7 +40,8 @@ class TestBaseModel(unittest.TestCase):
         instantiation of BaseModel class."""
 
         ins = BaseModel()
-        self.assertEqual(str(type(ins)), "<class 'models.base_model.BaseModel'>")
+        self.assertEqual(str(type(ins)),
+                         "<class 'models.base_model.BaseModel'>")
         self.assertIsInstance(ins, BaseModel)
         self.assertTrue(issubclass(type(ins), BaseModel))
 
@@ -72,7 +72,6 @@ class TestBaseModel(unittest.TestCase):
         ins = BaseModel(0, 1, 2, 3, 4, 5, 6, 7, 8, 9)
         ins = BaseModel(*args)
 
-
     def test_baseModel_datetime_creation(self):
         """This method is used for testing whether the attributes
         updated_at & created_at are current at creation or not."""
@@ -90,7 +89,7 @@ class TestBaseModel(unittest.TestCase):
         self.assertEqual(len(set(ins)), len(ins))
 
     def test_baseModel_save_method(self):
-        """This mehtod is used for testing the public instance method save()."""
+        """This method is used for testing public instance method save()."""
 
         ins = BaseModel()
         time.sleep(0.5)
@@ -130,7 +129,8 @@ class TestBaseModel(unittest.TestCase):
         self.assertEqual(d["age"], ins.age)
 
     def test_baseModel_to_dict_no_args(self):
-        """This method is used for testing the to_dict method with no arguments."""
+        """This method is used for testing the to_dict
+        method with no arguments."""
         self.resetStorage()
         with self.assertRaises(TypeError) as err:
             BaseModel.to_dict()
@@ -157,15 +157,16 @@ class TestBaseModel(unittest.TestCase):
         self.assertEqual(new_model.to_dict(), model.to_dict())
 
     def test_baseModel_kwargs_from_dict_instantiation(self):
-        """This method is used for testing instantiation with **kwargs from custom dict."""
+        """This method is used for testing instantiation
+        with **kwargs from custom dict."""
         my_dict = {"__class__": "BaseModel",
-             "updated_at":
-             datetime(2050, 12, 30, 23, 59, 59, 123456).isoformat(),
-             "created_at": datetime.now().isoformat(),
-             "id": uuid.uuid4(),
-             "var": "foobar",
-             "int": 108,
-             "float": 3.14}
+                   "updated_at":
+                   datetime(2050, 12, 30, 23, 59, 59, 123456).isoformat(),
+                   "created_at": datetime.now().isoformat(),
+                   "id": uuid.uuid4(),
+                   "var": "foobar",
+                   "int": 108,
+                   "float": 3.14}
         ins = BaseModel(**my_dict)
         self.assertEqual(ins.to_dict(), my_dict)
 
@@ -193,7 +194,8 @@ class TestBaseModel(unittest.TestCase):
         self.assertEqual(str(err.exception), msg)
 
     def test_baseModel_save_method_many_args(self):
-        """This method is used for testing save method with too many arguments."""
+        """This method is used for testing save method
+        with too many arguments."""
         self.resetStorage()
         with self.assertRaises(TypeError) as err:
             BaseModel.save(self, 98)
