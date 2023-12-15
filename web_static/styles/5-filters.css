@@ -6,7 +6,7 @@ section.filters {
     border-radius: 4px;
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: flex-start;
     position: relative;
 }
 section.filters button {
@@ -19,7 +19,27 @@ section.filters button {
     border-radius: 4px;
     margin-right: 30px;
     cursor: pointer;
+    margin-left: auto;
 }
 section.filters button:hover {
     opacity: 0.9;
+}
+.locations,
+.amenities {
+    height: 100%;
+    width: 25%;
+    float: left;
+}
+.locations {
+    border-right: 1px solid #DDDDDD;
+}
+.locations h3,
+.amenities h3 {
+    font-weight: 600;;
+}
+.locations h4,
+.amenities h4 {
+    font-weight: 400;
+    font-size: 14px;
+    margin: 0;
 }
